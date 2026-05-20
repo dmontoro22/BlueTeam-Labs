@@ -46,6 +46,6 @@ source="WinEventLog:Security" EventCode=1102 | fields - bkt, _cd, _raw
 
 ---
 
-# Dashboard de Seguridad en Tiempo Real
+## Dashboard de Seguridad en Tiempo Real
 A partir de la consulta optimizada en SPL, se diseñó un panel analítico (Dashboard Studio) en formato cuadrícula (Grid). Este panel actúa como un monitor crítico en el SOC: si un atacante intenta mitigar las evidencias borrando registros, el evento se refleja de manera permanente y visual en la pantalla del analista para agilizar la respuesta ante incidentes.
 <img width="1600" height="664" alt="image" src="https://github.com/user-attachments/assets/e2c92518-91fc-429f-88ad-53ecab55133f" />
