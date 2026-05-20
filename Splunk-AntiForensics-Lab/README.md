@@ -40,7 +40,7 @@ Splunk añade por defecto campos técnicos internos que saturan la visualizació
 
 Fragmento de código
 
-```
+```splunk
 source="WinEventLog:Security" EventCode=1102 | fields - bkt, _cd, _raw
 ```
 
