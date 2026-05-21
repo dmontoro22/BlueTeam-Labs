@@ -1,62 +1,35 @@
-# Hardening Inicial en Servidores Linux (Debian/Ubuntu)
+# Laboratorio de Hardening y Bastionado en Sistemas Linux
 
-## Descripción del Laboratorio
-Documentación del procedimiento estándar para la securización inicial de un servidor Linux. El objetivo de este laboratorio es aplicar una línea base de seguridad en un entorno VPS para reducir la superficie de ataque, bloquear intentos de fuerza bruta y asegurar los accesos de administración.
-
-## Entorno y Herramientas
-* Sistema Operativo: Ubuntu Server 22.04 LTS
-* Servicios: OpenSSH
-* Seguridad perimetral: UFW (Uncomplicated Firewall)
+Este proyecto documenta el proceso de endurecimiento (hardening) aplicado a un servidor Linux para mitigar vectores de ataque comunes, asegurar la gestión de accesos e implementar directrices de seguridad sólidas en el sistema operativo.
 
 ---
 
-## Procedimiento de Securización
+## Índice
 
-### 1. Actualización base del sistema
-Antes de configurar la red o exponer servicios, es imperativo aplicar los últimos parches de seguridad disponibles en los repositorios oficiales.
+1. **Descripción del Entorno y Objetivos**
+   * Especificaciones técnicas del sistema base.
+   * Alcance del bastionado.
 
-```bash
-# Actualización del listado de repositorios y paquetes del sistema
-sudo apt update && sudo apt upgrade -y
+2. **Gestión de Accesos y Principio de Mínimo Privilegio**
+   * Creación de usuarios con privilegios limitados.
+   * Configuración de acceso seguro a privilegios elevados (`sudo`).
+   * Desactivación del inicio de sesión directo como `root`.
 
-# Limpieza de paquetes obsoletos
-sudo apt autoremove -y
-```
+3. **Securización del Servicio SSH (OpenSSH)**
+   * Generación e implementación de pares de claves criptográficas.
+   * Deshabilitación de la autenticación por contraseña.
+   * Modificación del puerto por defecto y optimización del archivo `sshd_config`.
 
-### 2. Bastionado del servicio SSH
-El puerto de administración es el objetivo principal de ataques automatizados. Para mitigarlo, editamos la configuración del demonio SSH (`/etc/ssh/sshd_config`) para aplicar el principio de mínimo privilegio y forzar una autenticación fuerte.
+4. **Control de Tráfico de Red (Firewall con UFW)**
+   * Configuración de la política por defecto (Denegar todo el tráfico entrante).
+   * Definición de reglas específicas para servicios permitidos.
+   * Activación y verificación del estado del firewall.
 
-Los cambios clave en la configuración son:
-* Deshabilitar el acceso directo al usuario root (`PermitRootLogin no`).
-* Deshabilitar el acceso por contraseña (`PasswordAuthentication no`), forzando el uso de claves.
+5. **Protección Activa contra Fuerza Bruta (Fail2Ban)**
+   * Instalación y arquitectura del servicio.
+   * Configuración de cárceles (`jails`) específicas para OpenSSH.
+   * Verificación de la persistencia del bloqueo de IPs sospechosas.
 
-```bash
-# Edición del archivo de configuración
-sudo nano /etc/ssh/sshd_config
-
-# Una vez modificados los parámetros, reiniciamos el servicio
-sudo systemctl restart sshd
-```
-
-### 3. Configuración del Firewall (UFW)
-Aplicamos una política de denegación por defecto (default deny). Esto asegura que cualquier puerto no autorizado explícitamente quede bloqueado a nivel de red.
-
-```bash
-# Bloquear todo el tráfico entrante por defecto
-sudo ufw default deny incoming
-
-# Permitir el tráfico saliente
-sudo ufw default allow outgoing
-
-# Autorizar únicamente el puerto de administración SSH
-sudo ufw allow ssh
-
-# Activar el firewall
-sudo ufw enable
-```
-
-Para verificar que las reglas se han aplicado correctamente y persisten:
-
-```bash
-sudo ufw status verbose
-```
+6. **Auditoría y Verificación Final**
+   * Pruebas de acceso cruzado para comprobar las restricciones.
+   * Listado de comandos de comprobación del estado de los servicios.
