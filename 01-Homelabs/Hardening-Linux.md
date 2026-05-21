@@ -54,6 +54,7 @@ Se ha implementado el principio de mínimo privilegio creando un usuario estánd
 \`\`\`bash
 sudo adduser auditor
 \`\`\`
+
 <img width="675" height="403" alt="image" src="https://github.com/user-attachments/assets/de5537fc-93ca-43c2-a283-3b81da819638" />
 
 ### 2.2. Bloqueo de la Cuenta Root
@@ -63,6 +64,7 @@ Para prevenir ataques de fuerza bruta dirigidos al superusuario y forzar la audi
 sudo passwd -l root
 \`\`\`
 *(Resultado esperado: El sistema confirma el bloqueo modificando la caducidad o el estado de la contraseña).*
+
 <img width="427" height="46" alt="image" src="https://github.com/user-attachments/assets/05004429-9b49-4d49-b4c0-f204a353b819" />
 
 ## 3. Securización del Servicio SSH (OpenSSH)
@@ -71,6 +73,7 @@ El acceso remoto mediante SSH es uno de los vectores de ataque más críticos. P
 
 ### 3.1. Implementación de Claves Ed25519
 Se ha generado e importado un par de claves criptográficas utilizando el algoritmo `Ed25519`, conocido por su alto rendimiento y resistencia a ataques de fuerza bruta. La clave pública se ha autorizado en el archivo `~/.ssh/authorized_keys` del usuario con permisos estrictos (`600` para el archivo, `700` para el directorio).
+
 <img width="549" height="100" alt="image" src="https://github.com/user-attachments/assets/547b2f33-c6b9-482a-803e-27b9e48fe7c6" />
 
 
@@ -79,6 +82,7 @@ Se han aplicado las siguientes directivas de bastionado (Hardening) en la config
 
 * `Port 4422`: Modificación del puerto por defecto (22) para evadir el escaneo masivo automatizado y reducir el ruido en los logs.
 * `PasswordAuthentication no`: Deshabilitación absoluta del acceso por contraseña (fallback), requiriendo obligatoriamente la presentación de la clave privada autorizada.
+* 
 <img width="1281" height="860" alt="image" src="https://github.com/user-attachments/assets/15b9a8e7-54ad-496f-9dd8-f194c078a96e" />
 
 ## 4. Control de Tráfico de Red (Firewall con UFW)
@@ -98,6 +102,7 @@ To                         Action      From
 [ 1] 4422/tcp              ALLOW IN    Anywhere
 [ 2] 4422/tcp (v6)         ALLOW IN    Anywhere (v6) 
 ```
+
 <img width="723" height="393" alt="image" src="https://github.com/user-attachments/assets/d27fc6ef-7e87-434a-99c9-5919de66868f" />
 
  ## 5. Protección Activa contra Fuerza Bruta (Fail2Ban)
@@ -106,6 +111,7 @@ Para complementar las defensas perimetrales estáticas, se ha desplegado Fail2Ba
 
 ### 5.1. Definición de Políticas (Jail)
 Siguiendo las mejores prácticas de administración, se ha configurado una política local (`/etc/fail2ban/jail.local`) para evitar la sobrescritura durante las actualizaciones del paquete principal.
+
 <img width="712" height="193" alt="image" src="https://github.com/user-attachments/assets/4cb89c37-2d2e-41b8-83e9-08c9b9603acc" />
 
 
@@ -115,6 +121,7 @@ Se han definido los siguientes parámetros estrictos para el servicio SSH:
 * `bantime = 3600`: Tiempo de penalización (1 hora) durante el cual el tráfico de la IP atacante será descartado (DROP).
 
 Estado operativo verificado mediante la instrucción: `sudo fail2ban-client status sshd`.
+
 <img width="586" height="271" alt="image" src="https://github.com/user-attachments/assets/0c38b6cd-3df2-4fa1-b570-9d3de5e89639" />
 
 ## 6. Auditoría y Verificación Final
@@ -123,9 +130,12 @@ Para validar la efectividad de las políticas de bastionado implementadas, se de
 
 ### 6.1. Pruebas de Acceso Cruzado y Restricciones
 * **Auditoría de Mínimo Privilegio:** Al cambiar la sesión al usuario estándar (`su - auditor`) y ejecutar acciones de escalada de privilegios (ej. `sudo cat /etc/shadow`), el sistema bloquea la acción y registra un evento de seguridad (`not in the sudoers file`), confirmando la restricción.
+  
   <img width="429" height="161" alt="image" src="https://github.com/user-attachments/assets/5eb7d820-fac1-404a-9d56-fd615ff82e21" />
+  
 * **Auditoría de Autenticación SSH:** Cualquier intento de conexión sin la correspondiente clave privada Ed25519 es rechazado de forma silenciosa por el servidor, impidiendo el fallback a la autenticación por contraseña.
 * **Auditoría IPS (Fail2Ban):** La simulación de intentos fallidos reiterados desencadena la inserción de una regla `REJECT` en UFW para la IP origen, validando la defensa activa.
+  
   <img width="748" height="141" alt="image" src="https://github.com/user-attachments/assets/711a722e-9b99-4744-ae3a-86ea12878f24" />
 
 ### 6.2. Listado de Comandos de Comprobación de Estado
