@@ -29,6 +29,9 @@ sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
 ```
 
+<img width="1901" height="895" alt="image" src="https://github.com/user-attachments/assets/43dda387-9892-47a8-ab72-f944bee00334" />
+
+
 ## 2. Detección de Intrusiones y Mapeo MITRE ATT&CK
 
 Una vez establecida la conexión criptográfica entre el Endpoint y el SIEM, procedemos a validar la ingesta de logs simulando un ataque de fuerza bruta por SSH.
@@ -41,6 +44,9 @@ Desde un equipo externo, generamos accesos fallidos intencionados contra el puer
 ssh -p 4422 intruso@<IP_DEL_SERVIDOR_BASTIONADO>
 ```
 
+<img width="1901" height="900" alt="image" src="https://github.com/user-attachments/assets/7053627b-acf6-43ed-bfc3-0eef37004f92" />
+
+
 ### Validación en el SOC
 
 El panel de Wazuh detecta y categoriza el ataque exitosamente:
@@ -49,6 +55,9 @@ El panel de Wazuh detecta y categoriza el ataque exitosamente:
 *   **Framework MITRE ATT&CK:** Wazuh mapea automáticamente este comportamiento a la táctica de **Credential Access** y la técnica **T1110.001 (Password Guessing)**.
 
 > **Nota:** En este punto, si se superan los reintentos permitidos, el servicio `fail2ban` configurado en fases anteriores banea la IP del atacante, interactuando perfectamente con el SIEM.
+
+<img width="1880" height="653" alt="image" src="https://github.com/user-attachments/assets/31764dea-895d-44ee-8b39-6520b9a17881" />
+
 
 ## 3. Monitorización de Integridad de Archivos (FIM)
 
@@ -101,4 +110,5 @@ sudo grep -i "virus.txt" /var/ossec/logs/alerts/alerts.log
 ```
 
 Esta metodología permite a los analistas descartar falsos negativos generados por umbrales de severidad bajos (como la regla 554 de Wazuh) o cuellos de botella en el motor *inotify* del sistema operativo.
-```</IP_DEL_SERVIDOR_BASTIONADO>
+
+<img width="1899" height="899" alt="image" src="https://github.com/user-attachments/assets/34b1faa3-9a95-43f3-9fda-85133535cdbc" />
