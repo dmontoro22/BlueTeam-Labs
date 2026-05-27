@@ -1,6 +1,6 @@
 # Auditoría y Hardening de Servidor Linux (Kenobi)
 
-## Resumen Ejecutivo
+## Resumen 
 Este documento detalla la auditoría de seguridad realizada sobre un servidor Linux Ubuntu (Kenobi). Durante el ejercicio, se identificaron múltiples vulnerabilidades de configuración y software obsoleto que permitieron comprometer el sistema en su totalidad (Escalada a `root`). A continuación, se detalla la cadena de ataque (Kill Chain) y las contramedidas de bastionado (Hardening) necesarias para asegurar la infraestructura.
 
 ---
