@@ -42,5 +42,4 @@ Extensión de las operaciones de seguridad a entornos Cloud (Microsoft Azure).
 * **Automatización:** Python, Bash
 
 ---
-*Todo esto se encuentra en "Homelabs"*
-*Repositorio en constante actualización.* 
+*Todo esto se encuentra en "Homelabs"* --- *Repositorio en constante actualización.* 
