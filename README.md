@@ -13,7 +13,7 @@ Este entorno está diseñado para evolucionar desde la seguridad de un endpoint 
 ### 1. Endpoint & Server Security (Fase de Prevención)  En curso
 Fortificación de sistemas base y establecimiento de líneas seguras.
 * [x] **Hardening Inicial en Servidores Linux (Debian/Ubuntu):** Configuración de políticas de acceso, SSH, gestión de usuarios y despliegue de `auditd`.
-* [ ] **Benchmark CIS:** Auditoría y aplicación de los controles de seguridad del *Center for Internet Security* sobre la línea base.
+* [X] **Benchmark CIS:** Auditoría y aplicación de los controles de seguridad del *Center for Internet Security* sobre la línea base.
 
 ### 2. Network Security & Analysis (Fase de Visibilidad)  En curso
 Inspección de tráfico y detección de amenazas en la red.
