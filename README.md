@@ -18,11 +18,11 @@ Fortificación de sistemas base y establecimiento de líneas seguras.
 ### 2. Network Security & Analysis (Fase de Visibilidad)  En curso
 Inspección de tráfico y detección de amenazas en la red.
 * [x] **Análisis de Tráfico con herramientas de terminal:** Captura y decodificación manual de credenciales y tráfico no cifrado en archivos `.pcap` mediante `tcpdump`.
-* [ ] **Network Intrusion Detection System (NIDS):** Despliegue de Suricata/Snort en red doméstica para la generación de alertas automatizadas.
+* [X] **Network Intrusion Detection System (NIDS):** Despliegue de Suricata/Snort en red doméstica para la generación de alertas automatizadas.
 
 ### 3. Security Information and Event Management - SIEM (Fase de Operaciones)  Pendiente
 Centralización, correlación de logs y respuesta.
-* [ ] **Home Lab SIEM con Wazuh:** Despliegue del manager, conexión de agentes en los endpoints reales e ingesta de alertas del NIDS.
+* [X] **Home Lab SIEM con Wazuh:** Despliegue del manager, conexión de agentes en los endpoints reales e ingesta de alertas del NIDS.
 * [ ] **Threat Intelligence Automation:** Script en Python para ingestar Indicadores de Compromiso (IoCs) desde fuentes abiertas hacia el SIEM.
 * [ ] **Incident Response Playbooks:** Creación de respuestas activas (Active Response) frente a detecciones específicas.
 
