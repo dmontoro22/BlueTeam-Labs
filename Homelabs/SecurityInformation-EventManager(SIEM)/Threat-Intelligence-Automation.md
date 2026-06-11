@@ -102,5 +102,6 @@ Dado que los sistemas operativos modernos con `systemd-journald` tienden a canal
 
 ```bash
 echo "$(date '+%b %d %H:%M:%S') cis-ubuntu sshd[1234]: Failed password for root from 23.137.105.75 port 22 ssh2" | sudo tee -a /var/log/auth.log
+```
 
 <img width="1600" height="793" alt="image" src="https://github.com/user-attachments/assets/4718301f-8609-424f-89fd-54cfc00665b7" />
