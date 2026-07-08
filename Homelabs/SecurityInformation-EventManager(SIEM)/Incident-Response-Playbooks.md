@@ -24,6 +24,8 @@ Durante el despliegue del script de Respuesta Activa (`firewall-drop`), surgiero
 ## Resultado Final y Evidencia
 Tras afinar la configuración, se ejecutó un ataque simulado contra el servicio SSH. El SIEM detectó la anomalía y ordenó instantáneamente al agente inyectar una regla de caída (`DROP`) en `iptables`, aislando al atacante y cortando todo el tráfico de red (incluyendo ICMP/Ping) durante el tiempo de *timeout* configurado.
 
-![Evidencia del Bloqueo en iptables] <img width="518" height="231" alt="image" src="https://github.com/user-attachments/assets/a1bf51ae-648d-4d41-8582-ae3a1522617c" />
+![Evidencia del Bloqueo en iptables] 
+
+<img width="518" height="231" alt="image" src="https://github.com/user-attachments/assets/a1bf51ae-648d-4d41-8582-ae3a1522617c" />
 
 *Reglas DROP aplicadas dinámicamente por Wazuh Active Response sobre la IP atacante (10.0.2.4).*
