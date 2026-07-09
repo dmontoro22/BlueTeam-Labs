@@ -24,7 +24,7 @@ Inspección de tráfico y detección de amenazas en la red.
 Centralización, correlación de logs y respuesta.
 * [X] **Home Lab SIEM con Wazuh:** Despliegue del manager, conexión de agentes en los endpoints reales e ingesta de alertas del NIDS.
 * [X] **Threat Intelligence Automation:** Script en Python para ingestar Indicadores de Compromiso (IoCs) desde fuentes abiertas hacia el SIEM.
-* [ ] **Incident Response Playbooks:** Creación de respuestas activas (Active Response) frente a detecciones específicas.
+* [X] **Incident Response Playbooks:** Creación de respuestas activas (Active Response) frente a detecciones específicas.
 
 ### 4. Cloud Security & Architecture  Pendiente
 Extensión de las operaciones de seguridad a entornos Cloud (Microsoft Azure).
