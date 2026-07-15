@@ -28,7 +28,7 @@ Centralización, correlación de logs y respuesta.
 
 ### 4. Cloud Security & Architecture  Pendiente
 Extensión de las operaciones de seguridad a entornos Cloud (Microsoft Azure).
-* [ ] **Hardening de entorno Cloud:** Topología de red, NSGs y control de accesos. Proyecto puente para consolidar conocimientos de infraestructura en la nube.
+* [X] **Hardening de entorno Cloud:** Topología de red, NSGs y control de accesos. Proyecto puente para consolidar conocimientos de infraestructura en la nube.
 
 ### 5. Awareness & Human Risk  Pendiente
 * [ ] **Campaña de Phishing Ético:** Simulacro y redacción de programa de concienciación. 
